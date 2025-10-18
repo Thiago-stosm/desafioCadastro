@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 import static java.lang.IO.println;
 
-public class fileService {
+public class FileService {
 
     public static void reader(String path) throws IOException {
         BufferedReader buffRead = new BufferedReader(new FileReader(path));

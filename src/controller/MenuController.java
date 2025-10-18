@@ -1,28 +1,60 @@
 package controller;
 
 import model.exceptions.InvalidDigitException;
-import service.AuthService;
 import service.FileService;
+import service.MenuService;
 import view.MenuView;
 
 import java.io.IOException;
+import java.util.Scanner;
 
-public class AppController {
+import static java.lang.IO.println;
 
-    public AppController(){
+public class MenuController {
+
+    public MenuController(){
     }
 
     public void executarMenu() throws IOException, InvalidDigitException {
 
+        Scanner sc = new Scanner(System.in);
         MenuView menuView = new MenuView();
 
         menuView.mostrarBoasVindas();
         FileService.reader("C:/Users/LENOVO/Documents/Thiago/ProjetosPessoais/desafioCadastro/resources/formulario.txt");
-
         menuView.mostrarMenuOpcoes();
+        menuView.solicitarInput();
 
-        AuthService.validate(menuView.solicitarInput());
+        int num = 0;
+        while(true){
+            try{
+                MenuService.validate(num = sc.nextInt());
+                break;
+            }catch (InvalidDigitException e){
+                println("Digite um valor válido...");
+            }
+        }
 
-
+        switch(num){
+            case 1 -> {
+                UpdateController updateController = new UpdateController();
+            updateController.execute();
+            }
+            case 2 -> {
+                UpdateController updateController = new UpdateController();
+            }
+            case 3 -> {
+                DeleteController deleteController = new DeleteController();
+            }
+            case 4 -> {
+                ListAllController listAllController = new ListAllController();
+            }
+            case 5 -> {
+                FilterListController filterListController = new FilterListController();
+            }
+            case 6 -> {
+                GoOutController goOutController = new GoOutController();
+            }
+        }
     }
 }
