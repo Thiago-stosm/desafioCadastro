@@ -6,6 +6,7 @@ import service.MenuService;
 import view.MenuView;
 
 import java.io.IOException;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import static java.lang.IO.println;
@@ -31,8 +32,11 @@ public class MenuController {
                 MenuService.validate(num = sc.nextInt());
                 break;
             }catch (InvalidDigitException e){
-                println("Digite um valor válido...");
+                println("Digite um valor válido dentre as opções...");
+            }catch (InputMismatchException e){
+                println("Digite um número inteiro dentre as opções...");
             }
+            sc.nextLine();
         }
 
         switch(num){
