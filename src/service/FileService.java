@@ -3,6 +3,7 @@ package service;
 import java.io.*;
 import java.util.Scanner;
 
+import static java.lang.IO.print;
 import static java.lang.IO.println;
 
 public class FileService {

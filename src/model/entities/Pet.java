@@ -8,11 +8,23 @@ public class Pet {
     private String lastname;
     private Sex sex;
     private PetType petType;
-    private String adress;
-    private String distric;
+    private String address;
+    private String district;
     private Integer age;
     private Integer weight;
     private String breed;
+
+    public Pet(String firstname, String lastname, Sex sex, PetType petType, String address, String district, Integer age, Integer weight, String breed) {
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.sex = sex;
+        this.petType = petType;
+        this.address = address;
+        this.district = district;
+        this.age = age;
+        this.weight = weight;
+        this.breed = breed;
+    }
 
     public String getFirstname() {
         return firstname;
@@ -47,19 +59,19 @@ public class Pet {
     }
 
     public String getAdress() {
-        return adress;
+        return address;
     }
 
     public void setAdress(String adress) {
-        this.adress = adress;
+        this.address = adress;
     }
 
     public String getDistric() {
-        return distric;
+        return district;
     }
 
     public void setDistric(String distric) {
-        this.distric = distric;
+        this.district = distric;
     }
 
     public Integer getAge() {

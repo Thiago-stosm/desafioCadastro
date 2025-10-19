@@ -41,8 +41,8 @@ public class MenuController {
 
         switch(num){
             case 1 -> {
-                UpdateController updateController = new UpdateController();
-            updateController.execute();
+                RegisterController registerController = new RegisterController();
+                registerController.execute();
             }
             case 2 -> {
                 UpdateController updateController = new UpdateController();
