@@ -8,6 +8,8 @@ import model.exceptions.IncompleteNameException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.IO.println;
@@ -15,6 +17,7 @@ import static java.lang.IO.println;
 public class RegisterService {
     public static void register(String path) {
         Scanner sc = new Scanner(System.in);
+        PetService petService = new PetService();
 
         String firstname = null;
         String lastname = null;
@@ -22,7 +25,7 @@ public class RegisterService {
         PetType petType = null;
         String address = null;
         String district = null;
-        Integer age = null;
+        Double age = null;
         Integer weight = null;
         String breed = null;
 
@@ -36,24 +39,23 @@ public class RegisterService {
                 switch (contador){
 
                     case 1:
-                        PetService petService = new PetService();
                         String name = petService.inputName();
                         String[] names = name.split("\\s+");
                         firstname = names[0];
                         lastname = names[1];
                         break;
-
                     case 2:
-                        petType = PetType.valueOf(sc.nextLine());
+                        petType = petService.inputPetType();
                         break;
                     case 3:
-                        sex = Sex.valueOf(sc.nextLine());
+                        sex = petService.inputSex();
                         break;
                     case 4:
-                        address = sc.nextLine();
+                        List<String> fullAddress = petService.inputFullAddress();
+                        address = fullAddress.getFirst() + "" + fullAddress.get(1) + "" + fullAddress.get(2);
                         break;
                     case 5:
-                        age = sc.nextInt();
+                        age = petService.inputAge();
                         sc.nextLine();
                         break;
                     case 6:

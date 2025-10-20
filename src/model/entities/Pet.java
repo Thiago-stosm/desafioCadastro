@@ -10,11 +10,11 @@ public class Pet {
     private PetType petType;
     private String address;
     private String district;
-    private Integer age;
+    private Double age;
     private Integer weight;
     private String breed;
 
-    public Pet(String firstname, String lastname, Sex sex, PetType petType, String address, String district, Integer age, Integer weight, String breed) {
+    public Pet(String firstname, String lastname, Sex sex, PetType petType, String address, String district, Double age, Integer weight, String breed) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.sex = sex;
@@ -74,11 +74,11 @@ public class Pet {
         this.district = distric;
     }
 
-    public Integer getAge() {
+    public Double getAge() {
         return age;
     }
 
-    public void setAge(Integer age) {
+    public void setAge(Double age) {
         this.age = age;
     }
 
