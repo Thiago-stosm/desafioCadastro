@@ -5,6 +5,7 @@ import model.enums.Sex;
 import model.exceptions.AgeOutBoundException;
 import model.exceptions.IncompleteNameException;
 import model.exceptions.WeightOutBoundException;
+import model.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -24,6 +25,9 @@ public class PetService {
         while(true){
                 name = sc.nextLine();
                 if(name.trim().matches("[a-zA-Z ]+")){
+                    if(name.trim().isEmpty() || name == null){
+                        return Constants.INPUT_NULL;
+                    }
                     String[] split = name.split("\\s+");
                     if(split.length > 1){
                         return name;
