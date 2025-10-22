@@ -26,7 +26,7 @@ public class RegisterService {
         String address = null;
         String district = null;
         Double age = null;
-        Integer weight = null;
+        Double weight = null;
         String breed = null;
 
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
@@ -59,11 +59,11 @@ public class RegisterService {
                         sc.nextLine();
                         break;
                     case 6:
-                        weight = sc.nextInt();
+                        weight = petService.inputWeight();
                         sc.nextLine();
                         break;
                     case 7:
-                        breed = sc.nextLine();
+                        breed = petService.inputBreed();
                         break;
                 }
                 contador++;

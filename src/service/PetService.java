@@ -4,6 +4,7 @@ import model.enums.PetType;
 import model.enums.Sex;
 import model.exceptions.AgeOutBoundException;
 import model.exceptions.IncompleteNameException;
+import model.exceptions.WeightOutBoundException;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -90,7 +91,7 @@ public class PetService {
 
     public Double inputAge(){
 
-        Double age=0.0;
+        double age=0.0;
         while(true){
             try{
                 String input = sc.nextLine();
@@ -111,4 +112,34 @@ public class PetService {
             }
         }
     }
+
+    public Double inputWeight(){
+        double weight=0;
+
+        while (true) {
+            try{
+                weight = sc.nextDouble();
+                if(weight < 0.5 || weight > 60){
+                    throw new WeightOutBoundException("Erro! Digite um peso válido (entre 0.5 e 60 kg)...");
+                }
+                return weight;
+            }catch(InputMismatchException e){
+                println("Erro! Digite um valor válido...");
+            }
+        }
+    }
+
+    public String inputBreed(){
+
+        String breed = null;
+        while(true){
+              breed  = sc.nextLine();
+              if(breed.matches("[a-zA-Z ]+]")){
+                  return breed;
+              }else{
+                  print("Erro! Digite um valor válido...");
+              }
+        }
+    }
+
 }

@@ -11,10 +11,10 @@ public class Pet {
     private String address;
     private String district;
     private Double age;
-    private Integer weight;
+    private Double weight;
     private String breed;
 
-    public Pet(String firstname, String lastname, Sex sex, PetType petType, String address, String district, Double age, Integer weight, String breed) {
+    public Pet(String firstname, String lastname, Sex sex, PetType petType, String address, String district, Double age, Double weight, String breed) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.sex = sex;
@@ -82,11 +82,11 @@ public class Pet {
         this.age = age;
     }
 
-    public Integer getWeight() {
+    public Double getWeight() {
         return weight;
     }
 
-    public void setWeight(Integer weight) {
+    public void setWeight(Double weight) {
         this.weight = weight;
     }
 
