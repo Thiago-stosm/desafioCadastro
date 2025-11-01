@@ -97,4 +97,19 @@ public class Pet {
     public void setBreed(String breed) {
         this.breed = breed;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", sex=" + sex +
+                ", petType=" + petType +
+                ", address='" + address + '\'' +
+                ", district='" + district + '\'' +
+                ", age=" + age +
+                ", weight=" + weight +
+                ", breed='" + breed + '\'' +
+                '}';
+    }
 }

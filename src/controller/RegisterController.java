@@ -18,7 +18,6 @@ public class RegisterController {
         registerView.showSelection();
         registerService.register("C:/Users/LENOVO/Documents/Thiago/ProjetosPessoais/desafioCadastro/resources/formulario.txt");
 
-
     }
 
 

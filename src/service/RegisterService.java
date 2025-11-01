@@ -78,5 +78,7 @@ public class RegisterService {
         }
 
         Pet pet = new Pet(firstname, lastname, sex, petType, address, district, age, weight, breed);
+        String string = pet.toString();
+        println(string);
     }
 }

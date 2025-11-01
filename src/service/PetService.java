@@ -122,12 +122,14 @@ public class PetService {
 
         while (true) {
             try{
-                weight = sc.nextDouble();
+                weight = Double.parseDouble(sc.nextLine());
                 if(weight < 0.5 || weight > 60){
                     throw new WeightOutBoundException("Erro! Digite um peso válido (entre 0.5 e 60 kg)...");
                 }
                 return weight;
             }catch(InputMismatchException e){
+                println("Erro! Digite um valor válido...");
+            }catch(ClassCastException e){
                 println("Erro! Digite um valor válido...");
             }
         }
@@ -138,7 +140,7 @@ public class PetService {
         String breed = null;
         while(true){
               breed  = sc.nextLine();
-              if(breed.matches("[a-zA-Z ]+]")){
+              if(breed.matches("[a-zA-Z ]+")){
                   return breed;
               }else{
                   print("Erro! Digite um valor válido...");
