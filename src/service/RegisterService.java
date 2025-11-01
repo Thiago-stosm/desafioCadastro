@@ -6,15 +6,19 @@ import model.enums.Sex;
 import model.exceptions.IncompleteNameException;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
 import static java.lang.IO.println;
+import static java.time.OffsetDateTime.now;
 
 public class RegisterService {
+
     public static void register(String path) {
         Scanner sc = new Scanner(System.in);
         PetService petService = new PetService();
@@ -80,5 +84,22 @@ public class RegisterService {
         Pet pet = new Pet(firstname, lastname, sex, petType, address, district, age, weight, breed);
         String string = pet.toString();
         println(string);
+    }
+
+    public static void createPetFile(Pet pet){
+        OffsetDateTime now = now();
+        String dateArchive = now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ssXXX"));
+        dateArchive = dateArchive.replace(":", "");
+        String archiveName = dateArchive + "-" + pet.getFirstname().toUpperCase() + pet.getLastname().toUpperCase();
+        try{
+            File newFile = new File("C:/Users/LENOVO/Documents/Thiago/ProjetosPessoais/desafioCadastro/petsCadastrados", archiveName + ".TXT");
+            if (newFile.createNewFile()) {
+                System.out.println("Arquivo criado: " + newFile.getName());
+            } else {
+                System.out.println("O arquivo já existe.");
+            }
+        } catch (IOException e) {
+            println("Ocorreu um erro.");
+        }
     }
 }
