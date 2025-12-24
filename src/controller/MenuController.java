@@ -21,9 +21,9 @@ public class MenuController {
         MenuService menuService = new MenuService(scanner);
 
         println("Bem vindo! Escolha uma das opções a seguir: ");
-        menuView.menuDeOpcoes();
-        int opcaoEscolhida = menuService.captarOpcaoEscolhida(scanner);
-        switch(opcaoEscolhida) {
+        menuView.mostrarOpcoes();
+
+        switch(menuService.captarOpcaoEscolhida(scanner)) {
             case 1 -> {
                 CadastrarPetController cadastrarPetController = new CadastrarPetController();
                 cadastrarPetController.iniciarCadastro();

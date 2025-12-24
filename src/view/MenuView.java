@@ -5,7 +5,7 @@ import static java.lang.IO.println;
 public class MenuView {
     public MenuView(){
     }
-    public void menuDeOpcoes(){
+    public void mostrarOpcoes(){
         println(
                         "\n1.Cadastrar um novo pet" +
                         "\n2.Alterar os dados do pet cadastrado" +

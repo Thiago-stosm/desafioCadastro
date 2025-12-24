@@ -16,7 +16,7 @@ public class MenuService {
         while(true){
             try{
                 int opcaoEscolhida = scanner.nextInt();
-                if(opcaoEscolhida<=6 && opcaoEscolhida >=1){
+                if(opcaoEscolhida <= 6 && opcaoEscolhida >=1){
                     return opcaoEscolhida;
                 }else{
                     println("Erro! Digite um valor inteiro entre 1 e 6.");
