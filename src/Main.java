@@ -8,5 +8,7 @@ void main() {
         Scanner scanner = new Scanner(System.in);
         MenuController menuController = new MenuController(scanner);
         menuController.iniciarMenu();
+
+        scanner.close();
     }
 
