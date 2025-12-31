@@ -16,7 +16,7 @@ public class CadastrarPetService {
         this.scanner = scanner;
     }
 
-    public void captarResposta(int numeroResposta) {
+    public void criarPet() {
 
         String nomeCompleto;
         TipoPet tipoPet;
@@ -32,9 +32,25 @@ public class CadastrarPetService {
                     nomeCompleto = captarNome();
                 }
                 case 1 -> {
-
+                    captarTipoPet();
+                }
+                case 2 -> {
+                    captarSexo();
+                }
+                case 3 -> {
+                    captarEndereco();
+                }
+                case 4 -> {
+                    captarIdade();
+                }
+                case 5 -> {
+                    captarPeso();
+                }
+                case 6 -> {
+                    captarRaca();
                 }
             }
+            criarPet();
         }
     }
 
@@ -42,17 +58,47 @@ public class CadastrarPetService {
     public String captarNome() throws NomeIncompletoException{
 
         while(true){
-            String nomeCompleto = scanner.nextLine();
-            String[] NomeCompletoArray = nomeCompleto.split(" ");
-            String regexNomeCompleto = "[a-zA-Z\\s]+$";
-
-            if (NomeCompletoArray.length < 1) {
-                throw new NomeIncompletoException("Erro! Digite o nome completo do pet.");
-            }
-            else if(nomeCompleto.matches(regexNomeCompleto)){
+            String nomeCompleto;
+            if(validarNome(nomeCompleto = (scanner.nextLine()))){
                 return nomeCompleto;
-            }
+            };
             System.out.println("Erro! Digite um nome válido.");
         }
+    }
+
+    public void captarTipoPet(){
+    }
+
+    public void captarSexo(){}
+
+    public void captarEndereco(){}
+
+    public void captarIdade(){}
+
+    public void captarPeso(){}
+
+    public void captarRaca(){}
+
+    public boolean validarOrtografiaNome(String nomeCompleto){
+        String regexNomeCompleto = "^[a-zA-Z\\s]+$";
+        nomeCompleto = nomeCompleto.trim();
+        if(nomeCompleto.matches(regexNomeCompleto)){
+            return true;
+        }
+        return false;
+    }
+    public boolean validarComprimentoNome(String nomeCompleto){
+        boolean valido = nomeCompleto.length()>1? true : false;
+        return valido;
+    }
+    public boolean validarNome(String nomeCompleto) throws NomeIncompletoException{
+        if (validarOrtografiaNome(nomeCompleto)) {
+            if (validarComprimentoNome(nomeCompleto)) {
+                return true;
+            }else{
+                throw new NomeIncompletoException("Erro! Digite um nome completo.");
+            }
+        }
+        return false;
     }
 }
