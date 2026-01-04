@@ -2,12 +2,26 @@ package model.enums;
 
 public enum TipoPet {
 
-    GATO("gato", 1),
-    CACHORRO("cachorro", 2);
+    GATO("gato"),
+    CACHORRO("cachorro");
 
-    public final int VALOR;
+    private String valor;
 
-    TipoPet(String nome, int VALOR){
-        this.VALOR = VALOR;
+    TipoPet(String valor){
+        this.valor = valor;
+    }
+
+    public String getValor(){
+        return this.valor;
+    }
+
+    public static TipoPet tipoPetPorValor(String valor){
+
+            for(TipoPet tipoPet : TipoPet.values()){
+                if(tipoPet.getValor().equalsIgnoreCase(valor)){
+                    return tipoPet;
+                }
+            }
+        return null;
     }
 }
