@@ -22,4 +22,17 @@ public class Pet {
         this.peso = peso;
         this.raca = raca;
     }
+
+    @Override
+    public String toString() {
+        return "Pet{" +
+                "nomeCompleto='" + nomeCompleto + '\'' +
+                ", tipoPet=" + tipoPet +
+                ", sexo=" + sexo +
+                ", endereco='" + endereco + '\'' +
+                ", idade=" + idade +
+                ", peso=" + peso +
+                ", raca='" + raca + '\'' +
+                '}';
+    }
 }

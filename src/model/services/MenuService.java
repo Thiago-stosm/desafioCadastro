@@ -15,14 +15,14 @@ public class MenuService {
     public int captarOpcaoEscolhida(Scanner scanner){
         while(true){
             try{
-                int opcaoEscolhida = scanner.nextInt();
+                int opcaoEscolhida = Integer.parseInt(scanner.nextLine());
+
                 if(opcaoEscolhida <= 6 && opcaoEscolhida >=1){
                     return opcaoEscolhida;
                 }else{
                     println("Erro! Digite um valor inteiro entre 1 e 6.");
-                    scanner.nextLine();
                 }
-            }catch(InputMismatchException e){
+            }catch(NumberFormatException e){
                 println("Erro! Digite um valor válido.");
             }
         }

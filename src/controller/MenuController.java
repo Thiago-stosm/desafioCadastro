@@ -23,7 +23,10 @@ public class MenuController {
         System.out.println("Bem vindo! Escolha uma das opções a seguir: ");
         menuView.mostrarOpcoes();
 
-        switch(menuService.captarOpcaoEscolhida(scanner)) {
+        int opcaoEscolhida = menuService.captarOpcaoEscolhida(scanner);
+        scanner.nextLine();
+
+        switch(opcaoEscolhida) {
             case 1 -> {
                 CadastrarPetController cadastrarPetController = new CadastrarPetController(scanner);
                 cadastrarPetController.realizarCadastro(new File("src/content/formulario.txt"));
