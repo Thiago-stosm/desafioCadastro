@@ -23,6 +23,10 @@ public class Pet {
         this.raca = raca;
     }
 
+    public String getNomeCompleto() {
+        return nomeCompleto;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +
