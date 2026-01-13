@@ -1,5 +1,6 @@
 package controller;
 
+import model.entities.Pet;
 import model.enums.Sexo;
 import model.enums.TipoPet;
 import utils.FileUtil;
@@ -35,6 +36,8 @@ public class CadastrarPetController {
         FileUtil.lerFormulario(file);
 
         CadastrarPetService cadastrarPetService = new CadastrarPetService(scanner);
-        cadastrarPetService.criarPet();
+        Pet pet = cadastrarPetService.criarPet();
+        System.out.println("DEBUG: INICIANDO CRIAÇÃO DO ARQUIVO.");
+        FileUtil.criarArquivo(pet);
     }
 }
