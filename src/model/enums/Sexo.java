@@ -2,8 +2,8 @@ package model.enums;
 
 public enum Sexo {
 
-    MACHO("macho"),
-    FEMEA("femea");
+    MACHO("Macho"),
+    FEMEA("Femea");
 
     private String valor;
 

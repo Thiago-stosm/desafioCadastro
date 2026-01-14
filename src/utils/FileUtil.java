@@ -29,26 +29,61 @@ public class FileUtil {
         }
         return file;
     }
-
     public static String gerarNomeDoArquivo(Pet pet){
 
         String data = DateUtil.formatarData(DateUtil.captarDataLDT());
         String nomePet = pet.getNomeCompleto();
         return data + "-" + nomePet.toUpperCase() + ".TXT";
     }
-
     public static void checarDiretorio(File file){
         File parent = file.getParentFile();
         if(parent != null && !parent.exists()){
             parent.mkdirs();
         }
     }
-
     public static void confirmarCriacaoDoArquivo(boolean foiCriado){
         String seSucesso = "Arquivo do pet criado com sucesso.";
         String seFracasso = "Erro! Não foi possível criar o arquivo.";
         String resposta = foiCriado? seSucesso : seFracasso;
         System.out.println(resposta);
+    }
+
+
+    /*TODO
+    * Esse método abaixo possui um problema semântico:
+    * - possui uma classe inserirConteudoNoArquivo
+    * - essa classe possui outra classe interna escreverConteudoDoFormulario
+    * Viu? Tem um problema semântico grave, métodos com nome semelhantes e funções diferentes
+    * */
+    public static void inserirConteudoNoArquivo(File file, Pet pet){
+        try(FileWriter fw = new FileWriter(file, true)) {
+
+            BufferedWriter bw = new BufferedWriter(fw);
+            escreverConteudoDoFormulario(bw, pet);
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void escreverConteudoDoFormulario(BufferedWriter bw, Pet pet) throws IOException {
+        try{
+            bw.write("1 - " + pet.getNomeCompleto());
+            bw.newLine();
+            bw.write("2 - " + pet.getValorTipoPet());
+            bw.newLine();
+            bw.write("3 - " + pet.getValorSexoPet());
+            bw.newLine();
+            bw.write("4 - " + pet.getEndereco());
+            bw.newLine();
+            bw.write("5 - " + pet.getIdade() + " anos");
+            bw.newLine();
+            bw.write("6 - " + pet.getPeso() + "kg");
+            bw.newLine();
+            bw.write("7 - " + pet.getRaca());
+            bw.close();
+        }catch(IOException e){
+        }
     }
 
     public static void lerFormulario(File file){

@@ -59,7 +59,6 @@ public class CadastrarPetService {
         }
 
         Pet pet = new Pet(nomeCompleto, tipoPet, sexo, endereco, idade, peso, raca);
-        System.out.println(pet);
         return pet;
     }
 
@@ -103,7 +102,7 @@ public class CadastrarPetService {
     public TipoPet captarTipoPet(){
 
         System.out.println("\n2. Tipo do Pet: " +
-                "\nDigite o tipo do Pet (gato/cachorro):");
+                "\nDigite o tipo do Pet (Gato/Cachorro):");
 
         while(true){
             try{
@@ -119,7 +118,7 @@ public class CadastrarPetService {
     public Sexo captarSexo(){
 
         System.out.println("\n3. Sexo do Pet: " +
-                "Digite o sexo do Pet (macho/femea): ");
+                "Digite o sexo do Pet (Macho/Femea): ");
 
         while(true){
             try{
@@ -132,7 +131,6 @@ public class CadastrarPetService {
         }
 
     }
-
     public String captarEndereco(){
 
         System.out.println("\n4. Endereço completo: ");

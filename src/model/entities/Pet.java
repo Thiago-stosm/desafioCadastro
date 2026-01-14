@@ -27,6 +27,32 @@ public class Pet {
         return nomeCompleto;
     }
 
+    public String getValorTipoPet(){
+        String valorTipoPet =  tipoPet.getValor();
+        return valorTipoPet;
+    }
+
+    public String getValorSexoPet(){
+        String sexoPet = this.sexo.getValor();
+        return sexoPet;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public Integer getIdade() {
+        return idade;
+    }
+
+    public Double getPeso() {
+        return peso;
+    }
+
+    public String getRaca() {
+        return raca;
+    }
+
     @Override
     public String toString() {
         return "Pet{" +

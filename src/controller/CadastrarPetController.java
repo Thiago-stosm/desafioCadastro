@@ -37,7 +37,7 @@ public class CadastrarPetController {
 
         CadastrarPetService cadastrarPetService = new CadastrarPetService(scanner);
         Pet pet = cadastrarPetService.criarPet();
-        System.out.println("DEBUG: INICIANDO CRIAÇÃO DO ARQUIVO.");
-        FileUtil.criarArquivo(pet);
+        File arquivoPet = FileUtil.criarArquivo(pet);
+        FileUtil.inserirConteudoNoArquivo(arquivoPet, pet);
     }
 }
