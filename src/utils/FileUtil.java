@@ -10,7 +10,9 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class FileUtil {
 
@@ -100,5 +102,35 @@ public class FileUtil {
         }
     }
 
+    public static File[] listarArquivos() throws FileNotFoundException {
+        File diretorio = new File("/home/thiago/Documentos/projetos/desafioCadastro/output");
+        if(diretorio.exists()) {
+            return diretorio.listFiles();
+        }else{
+            throw new FileNotFoundException();
+        }
+    }
 
+    public static File retornaArquivoProcurado(File[] listaDeArquivos, String filtroDeBusca) throws FileNotFoundException {
+        // Listar arquivos
+
+        for (File file : listaDeArquivos){
+
+            try{
+                FileReader fr = new FileReader(file);
+                BufferedReader br = new BufferedReader(fr);
+                String linha;
+                while(!((linha = br.readLine()) == null)){
+                    if(linha == filtroDeBusca){
+                        return file;
+                    }
+                }
+            }catch (FileNotFoundException e){
+                System.out.println("Erro! Arquivo não encontrado.");
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return null;
+    }
 }

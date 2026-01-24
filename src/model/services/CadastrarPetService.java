@@ -44,6 +44,7 @@ public class CadastrarPetService {
                     //System.out.println(sexo.getValor());
                 }
                 case 3 -> {
+                    System.out.println("\n4. Endereço completo: ");
                     endereco = captarEndereco();
                 }
                 case 4 -> {
@@ -132,8 +133,6 @@ public class CadastrarPetService {
 
     }
     public String captarEndereco(){
-
-        System.out.println("\n4. Endereço completo: ");
         return  captarRuaEndereco() + ", " + String.valueOf(captarNumeroEndereco()) + ", " + captarCidadeEndereco();
 
     }

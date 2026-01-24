@@ -8,7 +8,7 @@ public class MenuView {
     public void mostrarOpcoes(){
         println(
                         "\n1.Cadastrar um novo pet" +
-                        "\n2.Alterar os dados do pet cadastrado" +
+                        "\n2.Buscar dados de um pet cadastrado" +
                         "\n3.Deletar um pet cadastrado" +
                         "\n4.Listar todos os pets cadastrados" +
                         "\n5.Listar pets por algum critério (idade, nome, raça)" +
