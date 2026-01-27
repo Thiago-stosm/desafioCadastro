@@ -78,7 +78,7 @@ public class FileUtil {
             bw.newLine();
             bw.write("5 - " + pet.getIdade() + " anos");
             bw.newLine();
-            bw.write("6 - " + pet.getPeso() + "kg");
+            bw.write("6 - " + pet.getPeso() + " kg");
             bw.newLine();
             bw.write("7 - " + pet.getRaca());
             bw.close();
@@ -165,6 +165,52 @@ public class FileUtil {
             if(linha.contains(criterio)){
                 iteratorSetCriterios.remove();
             }
+        }
+    }
+
+    public static ArrayList<String> criarArrayDeLinhasDoArquivo(File file){
+
+        ArrayList<String> linhasDoArquivo = new ArrayList<>();
+        String linha;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            while((linha = br.readLine()) != null){
+                linha = linha.substring(3);
+                linhasDoArquivo.add(linha);
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return linhasDoArquivo;
+    }
+
+    public static String gerarConteudoDeExibicaoDoArquivo(ArrayList<String> linhasDoArquivo){
+        String conteudo = "";
+
+        for(int i=0; i< linhasDoArquivo.size(); i++){
+            if(i == linhasDoArquivo.size()-1){
+                String elementoDaLista = linhasDoArquivo.get(i);
+                conteudo += elementoDaLista;
+            }
+            else{
+                String elementoDaLista = linhasDoArquivo.get(i) + " - ";
+                conteudo += elementoDaLista;
+            }
+        }
+        return conteudo;
+    }
+
+    public static void exibirArquivos(ArrayList<File> listaDeArquivosCompativeis){
+
+        int i = 1;
+
+        for(File file : listaDeArquivosCompativeis){
+          ArrayList<String> linhasDoArquivo = criarArrayDeLinhasDoArquivo(file);
+          String conteudo = String.valueOf(i) + ". ";
+          conteudo += gerarConteudoDeExibicaoDoArquivo(linhasDoArquivo);
+          System.out.println(conteudo);
+          i++;
         }
     }
 

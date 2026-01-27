@@ -30,9 +30,20 @@ public class BuscarPetService {
     }
 
     public int captarQtdCriterios(){
+
+        Set<Integer> setValoresValidos = new HashSet<>();
+        setValoresValidos.add(1);
+        setValoresValidos.add(2);
+
         while(true){
             try{
-                return Integer.parseInt(scanner.nextLine());
+                while(true){
+                   int entrada =  Integer.parseInt(scanner.nextLine());
+                   if(setValoresValidos.contains(entrada)){
+                       return entrada;
+                   }
+                    System.out.println("Erro! Digite um valor válido (1/2).");
+                }
             }catch(NumberFormatException e){
                 System.out.println("Erro! Digite um valor válido.");
             }
@@ -63,7 +74,7 @@ public class BuscarPetService {
                     if (setValoresValidos.contains(indexCriterio)){
                         return indexCriterio;
                     }
-                System.out.println("Erro! Digite um valor válido.");
+                System.out.println("Erro! Digite um valor válido. Helloo");
             }catch(NumberFormatException e){
                 System.out.println("Erro! Digite um valor válido.");
             }
@@ -120,7 +131,7 @@ public class BuscarPetService {
             System.out.println("Digite o sexo do Pet (Macho/Femea):\n");
 
             String sexo = scanner.nextLine();
-            boolean valido = (sexo).equalsIgnoreCase("MACHO") || (sexo).equalsIgnoreCase("MACHO");
+            boolean valido = (sexo).equalsIgnoreCase("MACHO") || (sexo).equalsIgnoreCase("FEMEA");
 
             if(valido){
                 return sexo;
@@ -132,12 +143,12 @@ public class BuscarPetService {
     public String captarCriterioIdade(){
         while(true){
             System.out.println("Critério: IDADE\n");
-            System.out.println("Digite a idade do Pet (máx: 20 anos):\n");
+            System.out.println("Digite a idade do Pet (máx: 20 anos):");
             try{
                 int idade = Integer.parseInt(scanner.nextLine());
                 boolean valido = idade > 0 && idade <= 20;
                 if(valido){
-                    return String.valueOf(valido);
+                    return String.valueOf(idade);
                 }
                 System.out.println("Erro! Digite uma idade válida (abaixo ou igual a 20 anos).");
             }catch(NumberFormatException e){
@@ -165,6 +176,8 @@ public class BuscarPetService {
         String regexRaca = "^[a-zA-Z\\s]+$";
 
         while(true){
+            System.out.println("Critério: RAÇA\n");
+            System.out.println("Digite o raça do Pet:\n");
             String raca = scanner.nextLine();
             raca = raca.trim();
             if(raca.matches(regexRaca)){

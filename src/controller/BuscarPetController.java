@@ -13,6 +13,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static utils.FileUtil.exibirArquivos;
+
 public class BuscarPetController {
 
     private final Scanner scanner;
@@ -57,7 +59,8 @@ public class BuscarPetController {
             throw new RuntimeException("Erro ao validar lista...");
         }
 
-        System.out.println(listaDeArquivosCompativeis);
+        exibirArquivos(listaDeArquivosCompativeis);
+
 
         // Agora eu tenho a lista de arquivos compatíveis, preciso printar os arquivos somente
     }
