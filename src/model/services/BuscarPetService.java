@@ -41,10 +41,9 @@ public class BuscarPetService {
 
     public String captarCriterioPorIndex(){
 
-            System.out.println(BuscarView.criteriosDeBusca);
-            System.out.println("\nDigite o index do critério que deseja utilizar: ");
+            System.out.println("\n"+BuscarView.criteriosDeBusca);
+            System.out.println("Digite o index do critério que deseja utilizar: ");
             int indexCriterio = captarIndexCriterio();
-        System.out.println("DEBUG - INDEX CRITERIO : ");
             return captarValorDoCriterio(indexCriterio);
     }
 
@@ -103,6 +102,8 @@ public class BuscarPetService {
         String regexNome = "^[a-zA-Z\\s]+$";
 
         while(true){
+            System.out.println("Critério: NOME\n");
+            System.out.println("Digite o nome do Pet:\n");
             String nome = scanner.nextLine();
             nome = nome.trim();
             if(nome.matches(regexNome)){

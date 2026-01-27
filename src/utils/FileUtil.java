@@ -116,8 +116,13 @@ public class FileUtil {
         ArrayList<File> listaDeArquivosCompativeis = new ArrayList<>();
 
         for(File arquivo : listaDeArquivos){
-            if(validarArquivo(arquivo, criterios)){
-                listaDeArquivosCompativeis.add(arquivo);
+            if(arquivo.isDirectory()){
+                listaDeArquivosCompativeis.addAll(validarListaDeArquivos(arquivo.listFiles(), criterios));
+            }
+            if(arquivo.isFile()){
+                if(validarArquivo(arquivo, criterios)){
+                    listaDeArquivosCompativeis.add(arquivo);
+                }
             }
         }
         return listaDeArquivosCompativeis;
