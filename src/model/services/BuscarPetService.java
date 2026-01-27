@@ -4,7 +4,10 @@ import model.enums.TipoPet;
 import model.exceptions.PesoForaDoLimiteException;
 import view.BuscarView;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Scanner;
+import java.util.Set;
 
 public class BuscarPetService {
 
@@ -36,29 +39,32 @@ public class BuscarPetService {
         }
     }
 
-    public String captarCriterio(){
+    public String captarCriterioPorIndex(){
 
-        while(true){
             System.out.println(BuscarView.criteriosDeBusca);
             System.out.println("\nDigite o index do critério que deseja utilizar: ");
             int indexCriterio = captarIndexCriterio();
-
-        }
+        System.out.println("DEBUG - INDEX CRITERIO : ");
+            return captarValorDoCriterio(indexCriterio);
     }
 
     public int captarIndexCriterio(){
 
-        int[] valoresValidos = {1, 2, 3, 4, 5, 6};
+        Set<Integer> setValoresValidos = new HashSet<>();
+        setValoresValidos.add(1);
+        setValoresValidos.add(2);
+        setValoresValidos.add(3);
+        setValoresValidos.add(4);
+        setValoresValidos.add(5);
+        setValoresValidos.add(6);
 
         while(true){
             try{
                 int indexCriterio  = Integer.parseInt(scanner.nextLine());
-                for(int n : valoresValidos){
-                    if (indexCriterio == n){
+                    if (setValoresValidos.contains(indexCriterio)){
                         return indexCriterio;
                     }
-                    System.out.println("Erro! Digite um valor válido.");
-                }
+                System.out.println("Erro! Digite um valor válido.");
             }catch(NumberFormatException e){
                 System.out.println("Erro! Digite um valor válido.");
             }

@@ -10,9 +10,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 public class FileUtil {
 
@@ -103,34 +101,66 @@ public class FileUtil {
     }
 
     public static File[] listarArquivos() throws FileNotFoundException {
+
         File diretorio = new File("/home/thiago/Documentos/projetos/desafioCadastro/output");
-        if(diretorio.exists()) {
-            return diretorio.listFiles();
+        if(diretorio.exists() && diretorio.isDirectory()) {
+            File[] arquivos = diretorio.listFiles();
+            return arquivos != null? arquivos : new File[0];
         }else{
             throw new FileNotFoundException();
         }
     }
 
-    public static File retornaArquivoProcurado(File[] listaDeArquivos, String filtroDeBusca) throws FileNotFoundException {
-        // Listar arquivos
+    public static ArrayList<File> validarListaDeArquivos(File[] listaDeArquivos, ArrayList<String> criterios) throws IOException {
 
-        for (File file : listaDeArquivos){
+        ArrayList<File> listaDeArquivosCompativeis = new ArrayList<>();
 
-            try{
-                FileReader fr = new FileReader(file);
-                BufferedReader br = new BufferedReader(fr);
-                String linha;
-                while(!((linha = br.readLine()) == null)){
-                    if(linha == filtroDeBusca){
-                        return file;
-                    }
-                }
-            }catch (FileNotFoundException e){
-                System.out.println("Erro! Arquivo não encontrado.");
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+        for(File arquivo : listaDeArquivos){
+            if(validarArquivo(arquivo, criterios)){
+                listaDeArquivosCompativeis.add(arquivo);
             }
         }
-        return null;
+        return listaDeArquivosCompativeis;
     }
+
+    public static boolean validarArquivo(File arquivo, List<String> criterios){
+
+        Set<String> setCriterios = new HashSet<>();
+
+        for(String criterio : criterios){ // Esse método adiciona ao Set todos os critérios normalizados
+            criterio = FileUtil.normalizarTexto(criterio);
+            setCriterios.add(criterio);
+        }
+
+        try(BufferedReader br = new BufferedReader(new FileReader(arquivo))) {
+            String linha;
+            while((linha = br.readLine()) != null){
+                FileUtil.validarLinha(linha, setCriterios);
+            }
+            return setCriterios.isEmpty();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static String normalizarTexto(String texto){
+        return texto.trim().toLowerCase();
+    }
+
+    public static void validarLinha(String linha, Set<String> setCriterios){
+
+        linha = FileUtil.normalizarTexto(linha);
+
+        Iterator<String> iteratorSetCriterios = setCriterios.iterator(); // Cria um iterator
+
+        while(iteratorSetCriterios.hasNext()){
+            String criterio = iteratorSetCriterios.next();
+
+            if(linha.contains(criterio)){
+                iteratorSetCriterios.remove();
+            }
+        }
+    }
+
 }

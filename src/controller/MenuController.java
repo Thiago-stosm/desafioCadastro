@@ -31,7 +31,10 @@ public class MenuController {
                 CadastrarPetController cadastrarPetController = new CadastrarPetController(scanner);
                 cadastrarPetController.realizarCadastro(new File("src/content/formulario.txt"));
             }
-            case 2 -> System.out.println("n");
+            case 2 -> {
+                BuscarPetController buscarPetController = new BuscarPetController(scanner);
+                buscarPetController.iniciarBusca();
+            }
             case 3 -> System.out.println("n");
             case 4 -> System.out.println("n");
             case 5 -> System.out.println("n");
